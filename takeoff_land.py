@@ -3,13 +3,21 @@ from pymavlink import mavutil
 import time
 import argparse  
 parser = argparse.ArgumentParser()
-parser.add_argument('--connect', default='127.0.0.1:14550')
+parser.add_argument('--connect') #default='127.0.0.1:14550'
 args = parser.parse_args()
+connection_string = args.connect
+if not connection_string:
+	import dronekit_sitl
+	sitl = dronekit_sitl.start_default()
+	connection_string =sitl.connection_string()
 
 # Connect to the Vehicle
+# If using dronekit-sitl:
+vehicle = connect(connection_string, wait_ready = True)
+# If using physical hardware:
+# vehicle = connect(args.connect, baud=921600, wait_ready=True)
+# 921600 is the baudrate that you have set in the mission plannar or qgc
 print('Connecting to vehicle on: %s' % args.connect)
-vehicle = connect(args.connect, baud=921600, wait_ready=True)
-#921600 is the baudrate that you have set in the mission plannar or qgc
 
 # Function to arm and then takeoff to a user specified altitude
 def arm_and_takeoff(aTargetAltitude):
