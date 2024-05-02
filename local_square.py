@@ -117,29 +117,29 @@ def goto_position_target_local_ned(north, east, down):
 arm_and_takeoff(5)
 
 print("SQUARE path using SET_POSITION_TARGET_LOCAL_NED and position parameters")
-DURATION = 8 #Set duration for each segment.
+DURATION = 6 #Set duration for each segment.
 
-print("North 50m, East 0m, 10m altitude for %s seconds" % DURATION)
-goto_position_target_local_ned(50,0,-10)
+print("North 20m, East 0m, 5m altitude for %s seconds" % DURATION)
+goto_position_target_local_ned(20,0,-5)
 print("Point ROI at current location (home position)") 
 # NOTE that this has to be called after the goto command as first "move" command of a particular type
 # "resets" ROI/YAW commands
 set_roi(vehicle.location.global_relative_frame)
 time.sleep(DURATION)
 
-print("North 50m, East 50m, 10m altitude")
-goto_position_target_local_ned(50,50,-10)
+print("North 20m, East 20m, 5m altitude")
+goto_position_target_local_ned(20,20,-5)
 time.sleep(DURATION)
 
 print("Point ROI at current location")
 set_roi(vehicle.location.global_relative_frame)
 
-print("North 0m, East 50m, 10m altitude")
-goto_position_target_local_ned(0,50,-10)
+print("North 0m, East 20m, 5m altitude")
+goto_position_target_local_ned(0,20,-5)
 time.sleep(DURATION)
 
-print("North 0m, East 0m, 10m altitude")
-goto_position_target_local_ned(0,0,-10)
+print("North 0m, East 0m, 5m altitude")
+goto_position_target_local_ned(0,0,-5)
 time.sleep(DURATION)
 
 
