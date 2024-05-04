@@ -17,7 +17,7 @@ def arm_and_takeoff(aTargetAltitude):
   print("Basic pre-arm checks")
   # Don't let the user try to arm until autopilot is ready
   while not vehicle.is_armable:
-    print " Waiting for vehicle to initialise..."
+    print(" Waiting for vehicle to initialise...")
     time.sleep(1)
         
   print("Arming motors")
@@ -42,7 +42,8 @@ def arm_and_takeoff(aTargetAltitude):
     time.sleep(1)
 
 # Initialize the takeoff sequence to 15m
-arm_and_takeoff(15)
+ALTITUDE = 3
+arm_and_takeoff(ALTITUDE)
 
 print("Take off complete")
 
