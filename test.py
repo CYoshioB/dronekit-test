@@ -15,7 +15,7 @@ def print_vehicle_state(vehicle):
 
 # Connect to the vehicle without waiting for it to be ready
 print("Connecting to vehicle...")
-vehicle = connect('/dev/ttyUSB0', baud=57600, wait_ready=False)
+vehicle = connect('/dev/ttyS0', baud=57600, wait_ready=False)
 
 try:
     # Display some vehicle attributes
