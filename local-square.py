@@ -122,7 +122,7 @@ DURATION = 6 #Set duration for each segment.
 LENGTH = 5
 
 print("North %sm, East 0m, 5m altitude for %s seconds" % (LENGTH, DURATION))
-goto_position_target_local_ned(20,0,-5)
+goto_position_target_local_ned(LENGTH,0,-5)
 print("Point ROI at current location (home position)") 
 # NOTE that this has to be called after the goto command as first "move" command of a particular type
 # "resets" ROI/YAW commands
@@ -130,14 +130,14 @@ set_roi(vehicle.location.global_relative_frame)
 time.sleep(DURATION)
 
 print("North %sm, East %sm, 5m altitude" % (LENGTH, LENGTH))
-goto_position_target_local_ned(20,20,-5)
+goto_position_target_local_ned(LENGTH,LENGTH,-5)
 time.sleep(DURATION)
 
 print("Point ROI at current location")
 set_roi(vehicle.location.global_relative_frame)
 
 print("North 0m, East %sm, 5m altitude" % (LENGTH))
-goto_position_target_local_ned(0,20,-5)
+goto_position_target_local_ned(0,LENGTH,-5)
 time.sleep(DURATION)
 
 print("North 0m, East 0m, 5m altitude")
