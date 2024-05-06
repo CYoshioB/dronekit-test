@@ -85,7 +85,6 @@ def get_location_metres(original_location, dNorth, dEast):
         
     return targetlocation;
 
-
 def get_distance_metres(aLocation1, aLocation2):
     """
     Returns the ground distance in metres between two LocationGlobal objects.
@@ -97,7 +96,6 @@ def get_distance_metres(aLocation1, aLocation2):
     dlat = aLocation2.lat - aLocation1.lat
     dlong = aLocation2.lon - aLocation1.lon
     return math.sqrt((dlat*dlat) + (dlong*dlong)) * 1.113195e5
-
 
 def get_bearing(aLocation1, aLocation2):
     """
@@ -113,7 +111,6 @@ def get_bearing(aLocation1, aLocation2):
     if bearing < 0:
         bearing += 360.00
     return bearing;
-
 
 
 """
@@ -155,8 +152,6 @@ def goto_position_target_global_int(aLocation):
     # send command to vehicle
     vehicle.send_mavlink(msg)
 
-
-
 def goto_position_target_local_ned(north, east, down):
     """	
     Send SET_POSITION_TARGET_LOCAL_NED command to request the vehicle fly to a specified 
@@ -184,8 +179,6 @@ def goto_position_target_local_ned(north, east, down):
         0, 0)    # yaw, yaw_rate (not supported yet, ignored in GCS_Mavlink) 
     # send command to vehicle
     vehicle.send_mavlink(msg)
-
-
 
 def goto(dNorth, dEast, gotoFunction=vehicle.simple_goto):
     """
@@ -215,9 +208,11 @@ def goto(dNorth, dEast, gotoFunction=vehicle.simple_goto):
             break;
         time.sleep(2)
 
+
 """
 Main Function
 """
+
 Altitude = 2
 Length = 3
 Duration = 10
@@ -226,7 +221,7 @@ arm_and_takeoff(Altitude)
 goto_position_target_local_ned(Length, 0, -Altitude)
 time.sleep(Duration)
 goto_position_target_local_ned(0, Length, -Altitude)
-time.sleep(Duation)
+time.sleep(Duration)
 goto_position_target_local_ned(0, 0, -Altitude)
 time.sleep(Duration)
 
