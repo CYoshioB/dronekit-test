@@ -40,7 +40,7 @@ def arm_and_takeoff(aTargetAltitude):
       break
     time.sleep(1)
     
- """
+"""
 Functions to make it easy to convert between the different frames-of-reference. In particular these
 make it easy to navigate in terms of "metres from the current position" when using commands that take 
 absolute positions in decimal degrees.
