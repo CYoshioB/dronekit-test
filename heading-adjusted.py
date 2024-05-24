@@ -104,7 +104,8 @@ arm_and_takeoff(ALTITUDE)
 DURATION = 5
 nLENGTH = 3
 eLENGTH = 0
-HEADING = 35
+INIT_HEADING = 0
+NEW_HEADING = 35
 
 print("Testing absolute local movement")
 # Simple movement command
@@ -113,13 +114,29 @@ time.sleep(DURATION)
 goto_position_target_local_ned(0,0,-ALTITUDE)
 time.sleep(DURATION)
 # Change heading, then move to same specified local coordinates
-condition_yaw(HEADING)
+condition_yaw(NEW_HEADING)
 time.sleep(DURATION)
 goto_position_target_local_ned(nLENGTH, eLENGTH, -ALTITUDE)
 time.sleep(DURATION)
 goto_position_target_local_ned(0,0,-ALTITUDE)
 time.sleep(DURATION)
 print("Absolute local movement test done.")
+
+print("Testing heading-adjusted movement")
+# Reset heading to 0 degrees, then move
+condition_yaw(INIT_HEADING)
+time.sleep(DURATION)
+heading_adjusted_goto(INIT_HEADING, nLENGTH, eLENGTH, -ALTITUDE)
+time.sleep(DURATION)
+heading_adjusted_goto(INIT_HEADING, 0, 0, -ALTITUDE)
+time.sleep(DURATION)
+# Change heading, then move
+condition_yaw(NEW_HEADING)
+time.sleep(DURATION)
+heading_adjusted_goto(INIT_HEADING, nLENGTH, eLENGTH, -ALTITUDE)
+time.sleep(DURATION)
+heading_adjusted_goto(INIT_HEADING, 0, 0, -ALTITUDE)
+time.sleep(DURATION)
 
 print("Setting LAND mode...")
 vehicle.mode = VehicleMode("LAND")
