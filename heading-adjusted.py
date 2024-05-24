@@ -103,7 +103,7 @@ arm_and_takeoff(ALTITUDE)
 
 DURATION = 5
 nLENGTH = 3
-eLENGTH = 1.5
+eLENGTH = 0
 HEADING = 35
 
 print("Testing absolute local movement")
@@ -118,6 +118,7 @@ time.sleep(DURATION)
 goto_position_target_local_ned(nLENGTH, eLENGTH, -ALTITUDE)
 time.sleep(DURATION)
 goto_position_target_local_ned(0,0,-ALTITUDE)
+time.sleep(DURATION)
 print("Absolute local movement test done.")
 
 print("Setting LAND mode...")
