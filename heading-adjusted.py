@@ -90,8 +90,8 @@ def condition_yaw(heading, relative=False):
 
 def heading_adjusted_goto(theta, north, east, down):
    # Transform absolute NED coordinates into XYZ relative to angle from North
-   nPrime = north*math.cos(math.radians(theta)) + east*math.sin(math.radians(theta))
-   ePrime = east*math.cos(math.radians(theta)) - north*math.sin(math.radians(theta))
+   nPrime = north*math.cos(math.radians(-theta)) + east*math.sin(math.radians(-theta))
+   ePrime = east*math.cos(math.radians(-theta)) - north*math.sin(math.radians(-theta))
    dPrime = down
 
    # Send Mavlink msg to go to adjusted local coordinates
@@ -133,9 +133,9 @@ time.sleep(DURATION)
 # Change heading, then move
 condition_yaw(NEW_HEADING)
 time.sleep(DURATION)
-heading_adjusted_goto(INIT_HEADING, nLENGTH, eLENGTH, -ALTITUDE)
+heading_adjusted_goto(NEW_HEADING, nLENGTH, eLENGTH, -ALTITUDE)
 time.sleep(DURATION)
-heading_adjusted_goto(INIT_HEADING, 0, 0, -ALTITUDE)
+heading_adjusted_goto(NEW_HEADING, 0, 0, -ALTITUDE)
 time.sleep(DURATION)
 
 print("Setting LAND mode...")
