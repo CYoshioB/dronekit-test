@@ -42,7 +42,7 @@ def arm_and_takeoff(aTargetAltitude):
     time.sleep(1)
 
 # Initialize the takeoff sequence to 3m
-ALTITUDE = 3
+ALTITUDE = 3.75
 arm_and_takeoff(ALTITUDE)
 
 print("Take off complete")
