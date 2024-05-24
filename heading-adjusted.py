@@ -103,9 +103,9 @@ arm_and_takeoff(ALTITUDE)
 
 DURATION = 5
 nLENGTH = 3
-eLENGTH = 0
+eLENGTH = -1
 INIT_HEADING = 0
-NEW_HEADING = 35
+NEW_HEADING = 80
 
 print("Testing absolute local movement")
 # Simple movement command
