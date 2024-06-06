@@ -108,12 +108,17 @@ HEADING = vehicle.heading
 # Globals that are updated everytime callback function is invoked
 global id, iso_date, lat, lon
 
+# Setup for RPi.GPIO
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(16, GPIO.IN)
+GPIO.setup(18, GPIO.IN)
+
 # Global position callback for logging water blasts
 def location_callback(self, attr_name, newVal):
     # Logic to check which ID is recognized
-    if GPIO.input(1) == 1 and GPIO.input(2) == 0:
+    if GPIO.input(16) == 1 and GPIO.input(18) == 0:
         id = 22
-    elif GPIO.input(2) == 1 and GPIO.input(1) == 0:
+    elif GPIO.input(18) == 1 and GPIO.input(16) == 0:
         id = 23
     else:
         return  # If no Aruco is recognized, break out of the callback
