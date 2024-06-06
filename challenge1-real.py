@@ -135,7 +135,7 @@ def location_callback(self, attr_name, newVal):
 vehicle.add_attribute_listener('location.global_frame', location_callback)
 
 # Arm and take off to value of ALTITUDE
-ALTITUDE = 2
+ALTITUDE = 1.2192
 arm_and_takeoff(ALTITUDE)
 
 print("Begin initial zig-zag flight pattern")
